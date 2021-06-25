@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" id="btnHome" href="#/home">Ejercicio</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a id="btnCapturar" class="nav-link" href="#/capturar">Capturar Prospecto
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="btnListar" class="nav-link" href="#/lista">Listado</a>
+              </li>
+              <li class="nav-item">
+                <a id = "btnEvaluar" class="nav-link" href="#/evaluar">Evaluar Prospectos</a>
+              </li>
+              
+              </li>
+            </ul>
+          </div>
+          <!-- SE PUEDE IMPLEMENTAR LOGIN
+          <div class="topnav-right">
+            <a class="nav-item nav-link" href="#/home">Login</a>
+          </div>
+          -->
+        </div>
+      </nav>
+    <br>
+    <br>
+
+        <!-- MAIN -->
+    <main class="container">
+
+
+      <!--*************DIV HOME************************************************************************************ -->
+      <div class="page" id=homePage>
+        <img src="concredito-logo.png" alt="Logo Concredito" class="centrar">
+      </div>
+      <!--*************TERMINA DIV HOME************************************************************************************ -->
+
+
+      <!--*************DIV DE CAPTURA************************************************************************************ -->
+      <div id=paginacaptura class="page" >
+          <!-- header -->
+          <header class="container header">
+              <h3 class="text-muted" id="regHeader">Captura de Prospectos</h3>
+          </header>
+          <!-- end header -->
+          <form id="inputForm">
+              <div class="form-group">
+                  <label for="nombre">Nombre*</label>
+                  <input type="text" class="form-control" id="txtnombre" placeholder="Nombre" maxlength="200">
+              </div>
+              <div class="form-group">
+                  <label for="papellido">Primer Apellido*</label>
+                  <input type="text" class="form-control" id="txtpapellido" placeholder="Primer Apellido" maxlength="200">
+              </div>
+              <div class="form-group">
+                  <label for="sapellido">Segundo Apellido</label>
+                  <input type="text" class="form-control" id="txtsapellido" placeholder="Segundo Apellido" maxlength="200">
+              </div>
+              <div class="form-group">
+                  <label for="calle">Calle*</label>
+                  <input type="text" class="form-control" id="txtcalle" placeholder="Calle" maxlength="200">
+              </div>
+              <div class="form-group">
+                  <label for="numero">Número*</label>
+                  <input type="text" class="form-control" id="txtnumero" placeholder="Número" maxlength="30">
+              </div>
+              <div class="form-group">
+                  <label for="colonia">Colonia*</label>
+                  <input type="text" class="form-control" id="txtcolonia" placeholder="Colonia" maxlength="200">
+              </div>
+              <div class="form-group">
+                  <label for="codigop">Código Postal*</label>
+                  <input type="number" class="form-control" id="txtcodigop" value="0" min="0" max ="2147483647">
+              </div>
+              <div class="form-group">
+                  <label for="telefono">Telefono*</label>
+                  <input type="number" class="form-control" id="txttelefono" value="0" min="0" max ="9999999999">
+              </div>
+              <div class="form-group">
+                  <label for="rfc">RFC*</label>
+                  <input type="text" class="form-control" id="txtrfc" placeholder="RFC" maxlength="13">
+              </div>
+              <div class ="container">
+                <div class="form-group">
+                  <label for="formFile" class="form-label mt-4">Documentos*</label><br>
+                  <input class="form-control" type="file" name ="photos" id="docs" multiple >
+                </div>
+              </div>
+              <br>
+              <button type="submit" id = "btnEnviar" class="btn btn-primary">Enviar</button>
+              <button type="button" id = "btnSalir" class="btn btn-secondary" href="#/home">Salir</button>
+          </form> 
+      
+      </div>
+      <!--*************DIV DE CAPTURA************************************************************************************ -->
+
+      <!--*************DIV PARA TABLA************************************************************************************ -->
+      <div id = "listado" class="page" style="display: none";>
+        <button type="button" class="btn btn-success" id="btnAut">Autorizar</button>
+        <button type="button" class="btn btn-danger" id="btnRech">Rechazar</button>
+      </div>
+      <!--*************TERMINA DIV TABLA************************************************************************************ -->
+
+      <!--*************MODALES Y MENSAJES VARIOS**************************************************************************** -->
+      <div id="observaciones" class="card border-primary mb-3" style="max-width: 20rem; display: none">
+        <div class="card-header">Observaciones</div>
+        <div class="card-body">
+          <p class="card-text" id ="msjobs"></p>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <select class="form-select" id="cmbProspectos" style="display: none">
+        </select>
+      </div>
+
+      <div class="modal" id ="miModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Advertencia</h5>
+              <button type="button" class="btn-close" id="btnCerrar" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>¿Está seguro de salir de la página?, Al salir se perderán los cambios.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="btnSi">Si</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnNo">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id ="modalCampos">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Advertencia</h5>
+              <button type="button" class="btn-close" id="btnCerrarCampos" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Es necesario llenar todos los campos con *.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="btnOK">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id ="modalObs">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Observaciones:</h5>
+              <button type="button" class="btn-close" id="btnCerrarObs" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <textarea class="txtarea" id="txtareaObs" rows="4"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="btnYES">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!--*************TERMINAN MODALES Y MENSAJES VARIOS**************************************************************************** -->
+
+  </main>
+  <!-- FIN DE MAIN -->
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <div class="footer">
+            <p class="text">Héctor Gastélum 2021 &copy;</p>
+      </div>
+
+      <script type="text/javascript" src ="js/main.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", onDOMLoaded);
+      </script>
+</body>
+</html>
