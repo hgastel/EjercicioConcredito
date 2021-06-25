@@ -11,3 +11,5 @@ Para el funcionamiento del proyecto será necesario realizar lo siguiente:
 - Al mostrarse "Server on port 4000" en la terminal o consola ya se puede acceder a todo el funcionamiento del frontend.
 
 - Para ejecutar el front, en la carpeta frontend se ejecutará index.html lo que levantará la página para probar el funcionamiento.
+
+- La ruta donde se alojan las imagenes en el servidor es \backend\src\public\uploads\
